@@ -16,18 +16,18 @@ lvim.plugins = {
     end,
   },
 
-  {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function()
-      require("codeium").setup({
-      })
-    end,
-    event = 'BufEnter'
-  },
+  -- {
+  --   "Exafunction/codeium.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "hrsh7th/nvim-cmp",
+  --   },
+  --   config = function()
+  --     require("codeium").setup({
+  --     })
+  --   end,
+  --   event = 'BufEnter'
+  -- },
 
   -- You must install glow globally
   -- https://github.com/charmbracelet/glow
@@ -91,7 +91,14 @@ lvim.plugins = {
   },
   { 'ojroques/nvim-osc52' },
 
-  { 'rcarriga/nvim-notify' },
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('notify').setup({
+        timeout = 1000,
+      })
+    end
+  },
   {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit

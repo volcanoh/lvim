@@ -3,20 +3,20 @@ local M = {}
 M.config = function()
   require("telekasten").setup({
     -- Main paths
-    -- home                        = vim.fn.expand("/Users/huangcan/My Drive/Obsidian/second-brain"), -- Put the name of your notes directory here
-    home                        = vim.fn.expand("~/.second-brain"), -- Put the name of your notes directory here
+    --
+    home                        = vim.fn.expand("/Users/huangcan/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain"),
 
-    auto_set_filetype = false,
+    auto_set_filetype           = false,
 
-    dailies                     = 'periodic-notes/daily-notes/',             -- path to daily notes
-    weeklies                    = 'periodic-notes/weekly-notes/',            -- path to weekly notes
-    templates                   = 'templates',                               -- path to templates
+    dailies                     = 'periodic-notes/daily-notes/',  -- path to daily notes
+    weeklies                    = 'periodic-notes/weekly-notes/', -- path to weekly notes
+    templates                   = 'templates',                    -- path to templates
 
     -- Specific note templates
     -- set to `nil` or do not specify if you do not want a template
     template_new_note           = 'templates/basenote.md', -- template for new notes
-    template_new_daily          = 'templates/daily.md', -- template for new daily notes
-    template_new_weekly         = 'templates/weekly.md', -- template for new weekly notes
+    template_new_daily          = 'templates/daily.md',    -- template for new daily notes
+    template_new_weekly         = 'templates/weekly.md',   -- template for new weekly notes
 
     -- Image subdir for pasting
     -- subdir name
@@ -35,19 +35,19 @@ M.config = function()
     -- file uuid type ("rand" or input for os.date such as "%Y%m%d%H%M")
     -- uuid_type                   = "%Y%m%d%H%M",
     -- uuid_type                   = "rand",
-    uuid_type = function()
+    uuid_type                   = function()
       local suffix = ""
       local characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ3456789' -- Reserve '012' for something else.
       for _ = 1, 8 do
-          local randomIndex = math.random(1, #characters)
-          suffix = suffix .. characters:sub(randomIndex, randomIndex)
+        local randomIndex = math.random(1, #characters)
+        suffix = suffix .. characters:sub(randomIndex, randomIndex)
       end
       return suffix
     end,
 
     -- UUID separator
     uuid_sep                    = "-",
-    filename_space_subst = '-',
+    filename_space_subst        = '-',
 
     -- Flags for creating non-existing notes
     follow_creates_nonexisting  = true, -- create non-existing on follow
@@ -57,10 +57,11 @@ M.config = function()
     -- Image link style",
     -- wiki:     ![[image name]]
     -- markdown: ![](image_subdir/xxxxx.png)
-    image_link_style            = "wiki",
+    -- image_link_style            = "wiki",
+    image_link_style = "markdown",
 
     -- Default sort option: 'filename', 'modified'
-    sort                        = "filename",
+    sort                        = "modified",
 
     -- Make syntax available to markdown buffers and telescope previewers
     install_syntax              = true,
@@ -110,11 +111,11 @@ M.config = function()
     },
 
     -- vaults                      = {
-      -- personal = {
-        -- configuration for personal vault. E.g.:
-        -- home = "/home/user/vaults/personal",
-        -- home = "~/obsidian/second-brain/"
-      -- }
+    -- personal = {
+    -- configuration for personal vault. E.g.:
+    -- home = "/home/user/vaults/personal",
+    -- home = "~/obsidian/second-brain/"
+    -- }
     -- },
   })
 end

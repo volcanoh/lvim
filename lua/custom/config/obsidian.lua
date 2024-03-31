@@ -9,7 +9,10 @@ M.config = function()
     workspaces = {
       {
         name = ".second-brain",
-        path = "~/.second-brain/",
+        -- path = "~/.second-brain/",
+        -- path = "~/.second-brain/",
+        path = "/Users/huangcan/Library/Mobile Documents/iCloud~md~obsidian/Documents/second-brain",
+        -- path = "~/Desktop/second-brain/",
         overrides = {
           notes_subdir = "0-inbox",
         },
@@ -22,6 +25,7 @@ M.config = function()
     ---@param url string
     follow_url_func = function(url)
       -- Open the URL in the default web browser.
+      vim.notify("Opening URL: " .. url)
       vim.fn.jobstart({ "open", url }) -- Mac OS
       -- vim.fn.jobstart({"xdg-open", url})  -- linux
     end,
