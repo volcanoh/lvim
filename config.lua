@@ -234,6 +234,7 @@ require('custom/plugins/lsp')
 require('custom/mappings')
 -- vim.cmd('source ~/.config/lvim/lua/custom/plugins/lualine.lua')
 lvim.builtin.nvimtree.setup.git.ignore = true
+lvim.builtin.nvimtree.setup.filesystem_watchers.enable = false
 
 
 table.insert(lvim.builtin.cmp.sources, { name = "codeium" })
