@@ -5,14 +5,23 @@
 --
 vim.opt_local.conceallevel = 2
 lvim.transparent_window = false
+
 lvim.plugins = {
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   event = "InsertEnter",
+  --   -- lazy = false,
+  --   dependencies = { "zbirenbaum/copilot.lua" },
+  --   config = function()
+  --     require("custom.config.copilot").config()
+  --   end,
+  -- },
+
   {
-    "zbirenbaum/copilot-cmp",
-    -- event = "InsertEnter",
-    lazy = false,
-    dependencies = { "zbirenbaum/copilot.lua" },
+    'luozhiya/fittencode.nvim',
     config = function()
-      require("custom.config.copilot").config()
+      -- require('fittencode').setup()
+      require("custom.config.fittencode").config()
     end,
   },
 
@@ -38,6 +47,21 @@ lvim.plugins = {
   --   -- build = "yay -S glow"
   -- },
   { "ellisonleao/glow.nvim",  config = true, cmd = "Glow" },
+  "KeitaNakamura/tex-conceal.vim",
+  "kdheepak/cmp-latex-symbols",
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = 'zathura'
+      vim.g.vimtex_quickfix_enabled = 1
+      vim.g.vimtex_syntax_enabled = 1
+      vim.g.vimtex_quickfix_mode = 0
+      vim.g.maplocalleader = ","
+      vim.g.vimtex_callback_progpath =  vim.fn.expand('$HOME/.local/bin/lvim')
+    end,
+    -- ft = 'tex'
+  },
 
   -- -- install without yarn or npm
   -- {
@@ -182,6 +206,7 @@ lvim.builtin.treesitter.rainbow.enable = false
 table.insert(lvim.builtin.treesitter.ensure_installed, "markdown")
 lvim.colorscheme = "monokai"
 lvim.builtin.lualine.style = "lvim" -- or "none"
+-- vimtex
 
 lvim.autocommands = {
   {

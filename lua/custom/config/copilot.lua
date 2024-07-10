@@ -50,6 +50,8 @@ M.config = function()
         hgcommit = false,
         svn = false,
         cvs = false,
+        txt = false,
+        -- ["*"] = false, -- disable for all other filetypes and ignore default `filetypes`
         ["."] = false,
       },
       copilot_node_command = 'node', -- Node.js version must be > 18.x

@@ -20,7 +20,7 @@ end, lvim.lsp.automatic_configuration.skipped_servers)
 
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup {
-  { command = "autopep8", filetypes = { "python" } },
+  { command = "autopep8",    filetypes = { "python" } },
   { name = "npm_groovy_lint", command = "npm-groovy-lint",
     args = { "--format", "-" }, to_stdin = true, },
   {
@@ -32,6 +32,7 @@ formatters.setup {
     ---@usage only start in these filetypes, by default it will attach to all filetypes it supports
     -- filetypes = { "typescript", "typescriptreact", "markdown" },
   },
+  { command = "latexindent", filetypes = { "tex" } },
 }
 
 local linters = require "lvim.lsp.null-ls.linters"

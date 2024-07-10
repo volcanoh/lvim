@@ -20,6 +20,8 @@ lvim.keys.normal_mode["<S-TAB>"] = { ":bprevious<CR>", { noremap = true, silent 
 lvim.keys.normal_mode["<S-l>"] = { '<cmd>NvimTreeToggle<CR>' }
 lvim.keys.normal_mode["<S-h>"] = { '<cmd>NvimTreeToggle<CR>' }
 
+lvim.keys.insert_mode["<C-l>"] = { '<cmd>lua require("fittencode").accept_all_suggestions()<CR>' }
+
 
 lvim.builtin.which_key.mappings["f"] = lvim.builtin.which_key.mappings["s"]
 lvim.builtin.which_key.mappings["/"] = lvim.builtin.which_key.mappings["s"]["t"]
