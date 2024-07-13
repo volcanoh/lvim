@@ -6,6 +6,8 @@
 vim.opt_local.conceallevel = 2
 lvim.transparent_window = false
 
+local os_name = vim.loop.os_uname().sysname
+
 lvim.plugins = {
   -- {
   --   "zbirenbaum/copilot-cmp",
@@ -58,7 +60,7 @@ lvim.plugins = {
       vim.g.vimtex_syntax_enabled = 1
       vim.g.vimtex_quickfix_mode = 0
       vim.g.maplocalleader = ","
-      vim.g.vimtex_callback_progpath =  vim.fn.expand('$HOME/.local/bin/lvim')
+      vim.g.vimtex_callback_progpath = vim.fn.expand('$HOME/.local/bin/lvim')
     end,
     -- ft = 'tex'
   },
@@ -123,31 +125,7 @@ lvim.plugins = {
       })
     end
   },
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = false,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    --   "BufReadPre path/to/my-vault/**.md",
-    --   "BufNewFile path/to/my-vault/**.md",
-    -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
-      "nvim-cmp",
-      "telescope.nvim",
 
-      -- see below for full list of optional dependencies 👇
-    },
-    config = function()
-      require("custom.config.obsidian").config()
-    end,
-
-  },
   -- {
   --   'preservim/vim-markdown'
   -- },
@@ -199,6 +177,35 @@ lvim.plugins = {
     "voldikss/vim-translator"
   }
 }
+
+if os_name == "Darwin" then
+  table.insert(lvim.plugins, {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = false,
+    ft = "markdown",
+    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
+    -- event = {
+    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    --   "BufReadPre path/to/my-vault/**.md",
+    --   "BufNewFile path/to/my-vault/**.md",
+    -- },
+    dependencies = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+      "nvim-cmp",
+      "telescope.nvim",
+      -- see below for full list of optional dependencies 👇
+    },
+    config = function()
+      require("custom.config.obsidian").config()
+    end,
+
+  })
+end
+
+
 require("telescope").load_extension("noice")
 
 lvim.builtin.treesitter.rainbow.enable = false
